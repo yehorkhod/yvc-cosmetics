@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Особистий кабінет — YVC Cosmetics</title>
+  <meta name="description" content="Особистий кабінет клієнта: записи, скасування та перенесення візитів.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="YVC Cosmetics — на головну" width="120" height="64"></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="burger" title="Меню"><span class="burger-lines"></span><span class="visually-hidden">Відкрити меню</span></label>
+      <nav class="main-nav" aria-label="Головне меню">
+        <ul class="nav-list">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="services.html">Послуги та ціни</a></li>
+        <li><a href="doctors.html">Лікарі</a></li>
+        <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+        <div class="header-actions">
+          <a class="link-login" href="login.html" aria-current="page">Увійти</a>
+          <a class="btn btn-outline" href="booking.html">Записатись</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="section container">
+      <div class="account-head">
+        <h1>Вітаємо, Анна Коваленко!</h1>
+        <a class="btn btn-small btn-secondary" href="login.html">Вийти</a>
+      </div>
+      <p class="note">Скасувати або перенести запис можна не пізніше ніж за 24 години до візиту. Якщо залишилося менше часу — зателефонуйте нам: <a href="tel:+380440000000">+380 44 000 00 00</a>.</p>
+
+      <section class="account-section">
+        <h2>Майбутні записи</h2>
+        <div class="table-wrap">
+        <table class="booking-table">
+          <caption class="visually-hidden">Майбутні записи</caption>
+          <thead>
+            <tr><th scope="col">Дата і час</th><th scope="col">Послуга</th><th scope="col">Лікар</th><th scope="col">Ціна</th><th scope="col">Статус</th><th scope="col">Дії</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><time datetime="2026-11-22T11:00">22.11.2026, 11:00</time></td>
+              <td>Ультразвукова чистка обличчя</td>
+              <td>Марія Ткаченко</td>
+              <td>1 200 грн</td>
+              <td><span class="status status--new">Нове</span></td>
+              <td class="actions">
+                <a class="btn btn-small btn-secondary" href="booking.html">Перенести</a>
+                <button type="button" class="btn btn-small btn-danger">Скасувати</button>
+              </td>
+            </tr>
+            <tr>
+              <td><time datetime="2026-12-03T14:00">03.12.2026, 14:00</time></td>
+              <td>Біоревіталізація</td>
+              <td>Ірина Мельник</td>
+              <td>3 800 грн</td>
+              <td><span class="status status--confirmed">Підтверджене</span></td>
+              <td class="actions">
+                <a class="btn btn-small btn-secondary" href="booking.html">Перенести</a>
+                <button type="button" class="btn btn-small btn-danger">Скасувати</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="form-message" id="account-message" role="status"></p>
+      </section>
+
+      <section class="account-section">
+        <h2>Історія візитів</h2>
+        <div class="table-wrap">
+        <table class="booking-table">
+          <caption class="visually-hidden">Минулі записи</caption>
+          <thead>
+            <tr><th scope="col">Дата і час</th><th scope="col">Послуга</th><th scope="col">Лікар</th><th scope="col">Ціна</th><th scope="col">Статус</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><time datetime="2026-10-15T10:00">15.10.2026, 10:00</time></td>
+              <td>Консультація лікаря-косметолога</td>
+              <td>Олена Коваль</td>
+              <td>500 грн</td>
+              <td><span class="status status--done">Завершене</span></td>
+            </tr>
+            <tr>
+              <td><time datetime="2026-09-02T16:00">02.09.2026, 16:00</time></td>
+              <td>Мигдальний пілінг</td>
+              <td>Олена Коваль</td>
+              <td>1 100 грн</td>
+              <td><span class="status status--cancelled">Скасоване</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section class="account-section card">
+        <h2>Мої дані</h2>
+        <ul class="plain-list">
+          <li>Email: anna@mail.com</li>
+          <li>Телефон: +380 67 000 00 00</li>
+        </ul>
+        <a href="contacts.html">Змінити дані</a>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section>
+        <h2>Контакти</h2>
+        <address>
+          м. Київ, вул. Прикладна, 12<br>
+          <a href="tel:+380440000000">+380 44 000 00 00</a><br>
+          <a href="mailto:info@yvc-cosmetics.example">info@yvc-cosmetics.example</a>
+        </address>
+      </section>
+      <section>
+        <h2>Графік роботи</h2>
+        <ul class="plain-list">
+          <li>Пн–Пт: 09:00–20:00</li>
+          <li>Сб: 10:00–18:00</li>
+          <li>Нд: вихідний</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Ми в соцмережах</h2>
+        <ul class="plain-list">
+          <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+          <li><a href="https://t.me/" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="container footer-bottom">© 2026 YVC Cosmetics. Навчальний проєкт.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 64" width="120" height="64" role="img" aria-label="YVC Cosmetics">
+  <text x="60" y="36" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="38" font-weight="500" fill="#364870" letter-spacing="-3">YVC</text>
+  <line x1="12" y1="44" x2="108" y2="44" stroke="#395AB0" stroke-width="1.5"/>
+  <text x="60" y="58" text-anchor="middle" font-family="Roboto, Arial, sans-serif" font-size="12" font-weight="300" fill="#395AB0" letter-spacing="1.5">COSMETICS</text>
+</svg>

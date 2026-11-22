@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Онлайн-запис — YVC Cosmetics</title>
+  <meta name="description" content="Онлайн-запис на процедуру до лікаря клініки YVC Cosmetics.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="YVC Cosmetics — на головну" width="120" height="64"></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="burger" title="Меню"><span class="burger-lines"></span><span class="visually-hidden">Відкрити меню</span></label>
+      <nav class="main-nav" aria-label="Головне меню">
+        <ul class="nav-list">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="services.html">Послуги та ціни</a></li>
+        <li><a href="doctors.html">Лікарі</a></li>
+        <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+        <div class="header-actions">
+          <a class="link-login" href="login.html">Увійти</a>
+          <a class="btn btn-outline" href="booking.html">Записатись</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="section container narrow">
+      <h1>Онлайн-запис</h1>
+      <p>Оберіть послугу, лікаря та зручний час. Адміністратор підтвердить запис, а ви отримаєте лист на email.</p>
+      <form class="form" id="booking-form" action="#" method="get">
+        <fieldset>
+          <legend>Процедура</legend>
+          <div class="field">
+          <label for="service">Послуга</label>
+          <select id="service" name="service" required>
+            <option value="">— оберіть послугу —</option>
+            <optgroup label="Догляд за обличчям">
+              <option>Ультразвукова чистка обличчя</option>
+              <option>Комбінована чистка обличчя</option>
+              <option>Мигдальний пілінг</option>
+              <option>Карбокситерапія</option>
+            </optgroup>
+            <optgroup label="Ін'єкційні процедури">
+              <option>Біоревіталізація</option>
+              <option>Мезотерапія обличчя</option>
+              <option>Ботулінотерапія (1 зона)</option>
+              <option>Контурна пластика губ</option>
+            </optgroup>
+            <optgroup label="Апаратна косметологія">
+              <option>RF-ліфтинг обличчя</option>
+              <option>Мікрострумова терапія</option>
+              <option>Лазерна епіляція (пахви)</option>
+            </optgroup>
+            <optgroup label="Догляд за тілом">
+              <option>Антицелюлітний масаж</option>
+              <option>Пресотерапія</option>
+            </optgroup>
+            <optgroup label="Консультації">
+              <option>Консультація лікаря-косметолога</option>
+              <option>Консультація дерматолога</option>
+            </optgroup>
+          </select>
+          <p class="field-error" id="service-error">Оберіть послугу.</p>
+          </div>
+          <div class="field">
+          <label for="doctor">Лікар</label>
+          <select id="doctor" name="doctor">
+            <option>Будь-який лікар</option>
+            <option>Олена Коваль</option>
+            <option>Ірина Мельник</option>
+            <option>Андрій Бондар</option>
+            <option>Марія Ткаченко</option>
+          </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+            <label for="date">Дата</label>
+            <input type="date" id="date" name="date" required>
+          <p class="field-error" id="date-error">Оберіть дату візиту.</p>
+            </div>
+            <div class="field">
+            <label for="time">Час</label>
+            <select id="time" name="time" required>
+              <option value="">— час —</option>
+            <option>10:00</option>
+            <option>11:00</option>
+            <option>12:00</option>
+            <option>13:00</option>
+            <option>14:00</option>
+            <option>15:00</option>
+            <option>16:00</option>
+            <option>17:00</option>
+            <option>18:00</option>
+            <option>19:00</option>
+            </select>
+          <p class="field-error" id="time-error">Оберіть час.</p>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Контактні дані</legend>
+          <div class="field">
+          <label for="name">Ім'я та прізвище</label>
+          <input type="text" id="name" name="name" autocomplete="name" required minlength="3">
+          <p class="field-error" id="name-error">Вкажіть ім'я (мінімум 3 символи).</p>
+          </div>
+          <div class="field">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+380 XX XXX XX XX" required pattern="\+?380[0-9 ]{9,12}">
+          <p class="field-error" id="phone-error">Вкажіть телефон у форматі +380XXXXXXXXX.</p>
+          </div>
+          <div class="field">
+          <label for="email">Email (необов'язково)</label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <p class="field-error" id="email-error">Вкажіть коректний email, наприклад name@mail.com.</p>
+          </div>
+          <div class="field">
+          <label for="comment">Коментар</label>
+          <textarea id="comment" name="comment" rows="4"></textarea>
+          </div>
+          <div class="field field-check">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">Погоджуюсь на обробку персональних даних</label>
+          <p class="field-error" id="consent-error">Потрібна ваша згода.</p>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Записатись</button>
+        <p class="form-message" id="booking-message" role="status"></p>
+      </form>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section>
+        <h2>Контакти</h2>
+        <address>
+          м. Київ, вул. Прикладна, 12<br>
+          <a href="tel:+380440000000">+380 44 000 00 00</a><br>
+          <a href="mailto:info@yvc-cosmetics.example">info@yvc-cosmetics.example</a>
+        </address>
+      </section>
+      <section>
+        <h2>Графік роботи</h2>
+        <ul class="plain-list">
+          <li>Пн–Пт: 09:00–20:00</li>
+          <li>Сб: 10:00–18:00</li>
+          <li>Нд: вихідний</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Ми в соцмережах</h2>
+        <ul class="plain-list">
+          <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+          <li><a href="https://t.me/" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="container footer-bottom">© 2026 YVC Cosmetics. Навчальний проєкт.</p>
+  </footer>
+</body>
+</html>

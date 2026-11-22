@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вхід — YVC Cosmetics</title>
+  <meta name="description" content="Вхід і реєстрація в особистому кабінеті клієнта YVC Cosmetics.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="YVC Cosmetics — на головну" width="120" height="64"></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="burger" title="Меню"><span class="burger-lines"></span><span class="visually-hidden">Відкрити меню</span></label>
+      <nav class="main-nav" aria-label="Головне меню">
+        <ul class="nav-list">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="services.html">Послуги та ціни</a></li>
+        <li><a href="doctors.html">Лікарі</a></li>
+        <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+        <div class="header-actions">
+          <a class="link-login" href="login.html" aria-current="page">Увійти</a>
+          <a class="btn btn-outline" href="booking.html">Записатись</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="section container">
+      <h1>Особистий кабінет</h1>
+      <p>Увійдіть, щоб переглянути свої записи, скасувати або перенести візит.</p>
+      <div class="auth-grid">
+        <section class="card auth-card">
+          <h2>Вхід</h2>
+          <form class="form" id="login-form" action="account.html" method="get">
+            <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" autocomplete="email" required>
+          <p class="field-error" id="login-email-error">Вкажіть email, з яким ви реєструвалися.</p>
+            </div>
+            <div class="field">
+            <label for="login-password">Пароль</label>
+            <input type="password" id="login-password" autocomplete="current-password" required minlength="8">
+          <p class="field-error" id="login-password-error">Пароль містить щонайменше 8 символів.</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Увійти</button>
+            <p><a href="contacts.html">Забули пароль?</a></p>
+          </form>
+        </section>
+        <section class="card auth-card">
+          <h2>Реєстрація</h2>
+          <form class="form" id="register-form" action="account.html" method="get">
+            <div class="field">
+            <label for="reg-name">Ім'я та прізвище</label>
+            <input type="text" id="reg-name" name="name" autocomplete="name" required minlength="3">
+          <p class="field-error" id="reg-name-error">Вкажіть ім'я (мінімум 3 символи).</p>
+            </div>
+            <div class="field">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" name="email" autocomplete="email" required>
+          <p class="field-error" id="reg-email-error">Вкажіть коректний email.</p>
+            </div>
+            <div class="field">
+            <label for="reg-password">Пароль</label>
+            <input type="password" id="reg-password" autocomplete="new-password" required minlength="8">
+          <p class="field-error" id="reg-password-error">Пароль має містити щонайменше 8 символів.</p>
+            </div>
+            <button type="submit" class="btn btn-secondary">Зареєструватися</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section>
+        <h2>Контакти</h2>
+        <address>
+          м. Київ, вул. Прикладна, 12<br>
+          <a href="tel:+380440000000">+380 44 000 00 00</a><br>
+          <a href="mailto:info@yvc-cosmetics.example">info@yvc-cosmetics.example</a>
+        </address>
+      </section>
+      <section>
+        <h2>Графік роботи</h2>
+        <ul class="plain-list">
+          <li>Пн–Пт: 09:00–20:00</li>
+          <li>Сб: 10:00–18:00</li>
+          <li>Нд: вихідний</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Ми в соцмережах</h2>
+        <ul class="plain-list">
+          <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+          <li><a href="https://t.me/" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="container footer-bottom">© 2026 YVC Cosmetics. Навчальний проєкт.</p>
+  </footer>
+</body>
+</html>
