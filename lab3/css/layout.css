@@ -165,16 +165,13 @@
 .hero {
   display: flex;
   align-items: center;
-  min-height: 70vh;
+  min-height: min(70vh, 640px);
   padding-block: var(--space-6);
   text-align: center;
   background-color: var(--bg-alt);
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
-    url("../images/interior-lounge.jpg");
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
-    image-set(url("../images/interior-lounge.webp") type("image/webp"), url("../images/interior-lounge.jpg") type("image/jpeg"));
+    url("../images/interior-lounge.webp");
   background-position: center;
   background-size: cover;
 }
@@ -372,6 +369,6 @@
   }
 
   .hero {
-    min-height: 80vh;
+    min-height: min(80vh, 720px);
   }
 }
