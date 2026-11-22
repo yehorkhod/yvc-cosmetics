@@ -1,3 +1,4 @@
 /* YVC Cosmetics — головний файл стилів.
    Порядок важливий: змінні та базові стилі → макет → компоненти. */
 @import url("base.css");
+@import url("layout.css");
