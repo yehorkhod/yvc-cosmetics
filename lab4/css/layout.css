@@ -142,7 +142,9 @@
   border-bottom: 1px solid var(--border);
 }
 
-.nav-list a:hover,
+/* Підсвітка пунктів меню при наведенні — клас .is-hovered
+   додається з JavaScript (ЛР4), а не через :hover */
+.nav-list a.is-hovered,
 .nav-list a[aria-current="page"],
 .link-login:hover,
 .link-login[aria-current="page"] {
@@ -352,6 +354,10 @@
 
   .nav-list a[aria-current="page"] {
     border-bottom-color: var(--royal-blue);
+  }
+
+  .nav-list a.is-hovered:not([aria-current="page"]) {
+    border-bottom-color: var(--sand-gold);
   }
 
   .header-actions {

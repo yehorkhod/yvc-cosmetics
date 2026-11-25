@@ -1,0 +1,202 @@
+/* ==========================================================
+   theme.css — темна тема (клас .dark-theme на <html>, ЛР4),
+   кнопка перемикача теми та спливаюче повідомлення (toast).
+   ========================================================== */
+
+.theme-toggle {
+  min-height: 36px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--dark-blue);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--royal-blue);
+}
+
+.toast {
+  position: fixed;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 200;
+  margin: 0;
+  padding: 10px var(--space-2);
+  color: var(--white);
+  background: var(--dark-blue);
+  border-radius: var(--radius);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Темна тема ---------- */
+.dark-theme {
+  --bg: #121826;
+  --bg-alt: #1A2233;
+  --surface: #1E2738;
+  --text: #E4E9F5;
+  --text-muted: #A7B1C8;
+  --border: #33415E;
+  --heading: #E1CA8D;
+  --link: #9DB4F0;
+  --link-hover: #C9D6F7;
+  --ok: #5BC68A;
+  --bad: #FF8A8A;
+  color-scheme: dark;
+}
+
+.dark-theme body {
+  background: var(--bg);
+}
+
+.dark-theme .site-header {
+  background: rgba(18, 24, 38, 0.96);
+  border-bottom-color: var(--border);
+}
+
+.dark-theme .logo img {
+  filter: brightness(0) invert(0.92);
+}
+
+.dark-theme strong {
+  color: var(--text);
+}
+
+.dark-theme .nav-list a,
+.dark-theme .link-login,
+.dark-theme .theme-toggle,
+.dark-theme .btn,
+.dark-theme .field label,
+.dark-theme .hero-lead,
+.dark-theme .price-table td:last-child {
+  color: var(--text);
+}
+
+.dark-theme .nav-list a[aria-current="page"],
+.dark-theme .nav-list a.is-hovered,
+.dark-theme .link-login[aria-current="page"] {
+  color: var(--link);
+}
+
+.dark-theme .burger-lines,
+.dark-theme .burger-lines::before,
+.dark-theme .burger-lines::after {
+  background: var(--text);
+}
+
+.dark-theme .nav-toggle:checked + .burger .burger-lines {
+  background: transparent;
+}
+
+.dark-theme .btn-primary {
+  color: var(--dark-blue);
+}
+
+.dark-theme .btn-outline,
+.dark-theme .btn-secondary {
+  border-color: var(--link);
+}
+
+.dark-theme .btn-danger {
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+.dark-theme .btn-danger:hover {
+  color: var(--white);
+}
+
+.dark-theme .btn:disabled,
+.dark-theme .btn[aria-disabled="true"] {
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+.dark-theme .hero {
+  background-image:
+    linear-gradient(rgba(18, 24, 38, 0.72), rgba(18, 24, 38, 0.72)),
+    url("../images/interior-lounge.jpg");
+  background-image:
+    linear-gradient(rgba(18, 24, 38, 0.72), rgba(18, 24, 38, 0.72)),
+    image-set(url("../images/interior-lounge.webp") type("image/webp"), url("../images/interior-lounge.jpg") type("image/jpeg"));
+}
+
+.dark-theme .card,
+.dark-theme .review,
+.dark-theme .form input:not([type="checkbox"]),
+.dark-theme .form select,
+.dark-theme .form textarea {
+  color: var(--text);
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+.dark-theme .form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23E4E9F5' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.dark-theme .card-price,
+.dark-theme .doctor-role,
+.dark-theme .toc a,
+.dark-theme .status--new {
+  color: var(--link);
+}
+
+.dark-theme .toc a {
+  border-color: var(--link);
+}
+
+.dark-theme .toc a:hover {
+  color: var(--bg);
+  background: var(--link);
+}
+
+.dark-theme .note {
+  background: rgba(225, 202, 141, 0.12);
+}
+
+.dark-theme .status--confirmed,
+.dark-theme .status--done {
+  color: var(--ok);
+}
+
+.dark-theme .status--cancelled,
+.dark-theme .field-error,
+.dark-theme .field.is-invalid label {
+  color: var(--bad);
+}
+
+.dark-theme .field.is-invalid input,
+.dark-theme .field.is-invalid select,
+.dark-theme .field.is-invalid textarea {
+  border-color: var(--bad);
+  background-color: rgba(197, 48, 48, 0.15);
+}
+
+.dark-theme .form-message {
+  color: var(--ok);
+  background: rgba(31, 122, 77, 0.18);
+  border-left-color: var(--ok);
+}
+
+.dark-theme .form-message.is-error {
+  color: var(--bad);
+  background: rgba(197, 48, 48, 0.15);
+  border-left-color: var(--bad);
+}
+
+.dark-theme .site-footer {
+  background: #0D1220;
+}

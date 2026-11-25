@@ -87,3 +87,88 @@ function initAccordion() {
 showCurrentDate();
 highlightPromotions();
 initAccordion();
+
+/* ---------- 3.1 Перемикач теми (клас dark-theme + localStorage) ---------- */
+const THEME_KEY = 'yvc-theme';
+
+function applyTheme(theme) {
+  const isDark = theme === 'dark';
+  document.documentElement.classList.toggle('dark-theme', isDark);
+  const button = $('#theme-toggle');
+  if (button) {
+    button.setAttribute('aria-pressed', String(isDark));
+    button.textContent = isDark ? 'Світла тема' : 'Темна тема';
+  }
+}
+
+function initTheme() {
+  applyTheme(storage.get(THEME_KEY, 'light'));
+  const button = $('#theme-toggle');
+  if (!button) return;
+  button.addEventListener('click', () => {
+    const next = document.documentElement.classList.contains('dark-theme') ? 'light' : 'dark';
+    applyTheme(next);
+    storage.set(THEME_KEY, next);
+  });
+}
+
+/* ---------- 3.2 Підсвітка меню при наведенні (JS-класи, не :hover) ---------- */
+function initMenuHover() {
+  $$('.nav-list a').forEach((link) => {
+    const on = () => link.classList.add('is-hovered');
+    const off = () => link.classList.remove('is-hovered');
+    link.addEventListener('mouseenter', on);
+    link.addEventListener('mouseleave', off);
+    // те саме для клавіатури, щоб підсвітка працювала й без миші
+    link.addEventListener('focus', on);
+    link.addEventListener('blur', off);
+  });
+}
+
+/* ---------- 3.2 Розмір шрифту стрілками ↑ / ↓ ---------- */
+const FONT_KEY = 'yvc-font-size';
+const FONT_MIN = 12;
+const FONT_MAX = 24;
+const FONT_STEP = 2;
+
+function showToast(text) {
+  let toast = $('#toast');
+  if (!toast) {
+    toast = document.createElement('p');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    toast.setAttribute('role', 'status');
+    document.body.append(toast);
+  }
+  toast.textContent = text;
+  toast.classList.add('is-visible');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), 1500);
+}
+
+function setFontSize(size) {
+  document.documentElement.style.fontSize = `${size}px`;
+}
+
+function initFontSize() {
+  let size = storage.get(FONT_KEY, 16);
+  setFontSize(size);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    // у полях форм стрілки мають працювати як звичайно
+    if (event.target.closest('input, textarea, select, [contenteditable]')) return;
+
+    event.preventDefault();
+    const delta = event.key === 'ArrowUp' ? FONT_STEP : -FONT_STEP;
+    size = Math.min(FONT_MAX, Math.max(FONT_MIN, size + delta));
+    setFontSize(size);
+    storage.set(FONT_KEY, size);
+    showToast(`Розмір шрифту: ${size}px`);
+  });
+}
+
+initTheme();
+initMenuHover();
+initFontSize();

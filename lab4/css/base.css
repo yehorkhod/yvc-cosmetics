@@ -16,6 +16,7 @@
   --bg-alt: #F4F6FB;
   --text: #1F2A44;
   --text-muted: #55617D;
+  --surface: var(--white);
   --border: #D5DCEB;
   --heading: var(--dark-blue);
   --link: var(--royal-blue);
@@ -48,7 +49,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font);
-  font-size: 16px;
+  font-size: 1rem; /* rem, щоб розмір змінювався стрілками ↑/↓ (ЛР4) */
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
