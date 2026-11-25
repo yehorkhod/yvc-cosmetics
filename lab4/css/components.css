@@ -1,0 +1,423 @@
+/* ==========================================================
+   components.css — кнопки, картки, таблиці, форми, статуси
+   ========================================================== */
+
+/* ---------- Кнопки (брендбук: прямокутні, тонка рамка) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px var(--space-3);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  color: var(--dark-blue);
+  background: transparent;
+  border: 2px solid var(--royal-blue);
+  border-radius: var(--radius);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  color: var(--dark-blue);
+}
+
+/* Основна: пісочне золото, рамка й текст темно-сині */
+.btn-primary {
+  background: rgba(225, 202, 141, 0.88);
+  border-color: var(--dark-blue);
+}
+
+.btn-primary:hover {
+  background: var(--sand-gold);
+  border-color: var(--royal-blue);
+}
+
+/* Другорядна (у шапці): прозорий фон, синя рамка */
+.btn-outline:hover,
+.btn-secondary:hover {
+  color: var(--white);
+  background: var(--royal-blue);
+}
+
+.btn-secondary {
+  border-color: var(--royal-blue);
+}
+
+/* Небезпечна дія: скасування запису */
+.btn-danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn-danger:hover {
+  color: var(--white);
+  background: var(--danger);
+}
+
+.btn-small {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  color: var(--text-muted);
+  background: var(--bg-alt);
+  border-color: var(--border);
+  cursor: not-allowed;
+}
+
+/* ---------- Картки ---------- */
+.card {
+  padding: var(--space-3);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid var(--sand-gold);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(54, 72, 112, 0.12);
+}
+
+.card-price {
+  margin-top: auto;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: var(--royal-blue);
+}
+
+.doctor-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.doctor-card img {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.doctor-role {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--royal-blue);
+}
+
+@media (min-width: 600px) {
+  .doctor-card {
+    flex-direction: row;
+  }
+}
+
+/* ---------- Список переваг ---------- */
+.feature-list li {
+  margin-bottom: var(--space-1);
+}
+
+/* ---------- Відгуки ---------- */
+.review {
+  padding: var(--space-3);
+  background: var(--white);
+  border-left: 3px solid var(--sand-gold);
+}
+
+.review p {
+  font-size: 1.0625rem;
+}
+
+.review footer {
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* ---------- Зміст сторінки послуг ---------- */
+.toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.toc li + li {
+  margin-top: 0;
+}
+
+.toc a {
+  display: inline-block;
+  padding: 6px 14px;
+  text-decoration: none;
+  border: 1px solid var(--royal-blue);
+  border-radius: 999px;
+}
+
+.toc a:hover {
+  color: var(--white);
+  background: var(--royal-blue);
+}
+
+/* ---------- Таблиці ---------- */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--space-3);
+  border: 1px solid var(--border);
+}
+
+.price-section {
+  margin-top: var(--space-4);
+  scroll-margin-top: 96px;
+}
+
+.price-table {
+  table-layout: fixed;
+  min-width: 480px;
+}
+
+.price-table th:first-child {
+  width: 60%;
+}
+
+.price-table td:last-child {
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--dark-blue);
+}
+
+.booking-table td,
+.booking-table th {
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-1);
+}
+
+/* ---------- Бейджі та статуси ---------- */
+.badge {
+  display: inline-block;
+  margin-left: var(--space-1);
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--dark-blue);
+  background: var(--sand-gold);
+}
+
+.status {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.status--new {
+  color: var(--royal-blue);
+}
+
+.status--confirmed,
+.status--done {
+  color: var(--success);
+}
+
+.status--cancelled {
+  color: var(--danger);
+}
+
+.note {
+  padding: var(--space-2);
+  background: rgba(225, 202, 141, 0.25);
+  border-left: 3px solid var(--sand-gold);
+}
+
+/* ---------- Форми ---------- */
+.form fieldset {
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  border: 0;
+}
+
+.form legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--heading);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-2);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 var(--space-2);
+}
+
+@media (min-width: 600px) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field label {
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.form input:not([type="checkbox"]),
+.form select,
+.form textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form input:not([type="checkbox"]),
+.form select {
+  height: 48px;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+/* Кросбраузерність: Safari і Firefox по-різному малюють <select> і
+   поле дати, тому прибираємо системний вигляд і задаємо власну стрілку. */
+.form select {
+  padding-right: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23364870' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.form input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1.2;
+}
+
+.form input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: var(--royal-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(57, 90, 176, 0.2);
+}
+
+.field-check {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.field-check input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--royal-blue);
+}
+
+.field-check label {
+  margin: 0;
+  font-weight: 400;
+}
+
+.field-check .field-error {
+  flex-basis: 100%;
+}
+
+/* ---------- Валідація ----------
+   HTML5-атрибути (required, minlength, pattern, type="email")
+   перевіряє браузер. :user-invalid спрацьовує лише після того,
+   як користувач змінив поле або спробував надіслати форму,
+   тож порожня форма не «червоніє» одразу.
+   Клас .is-invalid додається скриптом (ЛР4). */
+.field-error {
+  display: none;
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: var(--danger);
+}
+
+.form input:user-invalid,
+.form select:user-invalid,
+.form textarea:user-invalid,
+.field.is-invalid input,
+.field.is-invalid select,
+.field.is-invalid textarea {
+  border-color: var(--danger);
+  background-color: #FFF5F5;
+}
+
+.field:has(:user-invalid) .field-error,
+.field.is-invalid .field-error {
+  display: block;
+}
+
+.field:has(:user-invalid) label,
+.field.is-invalid label {
+  color: var(--danger);
+}
+
+.form-message:empty {
+  display: none;
+}
+
+.form-message {
+  margin-top: var(--space-2);
+  padding: 12px var(--space-2);
+  font-weight: 500;
+  color: var(--success);
+  background: #EEF8F2;
+  border-left: 3px solid var(--success);
+}
+
+.form-message.is-error {
+  color: var(--danger);
+  background: #FFF5F5;
+  border-left-color: var(--danger);
+}
+
+.auth-card .form {
+  margin-top: var(--space-2);
+}

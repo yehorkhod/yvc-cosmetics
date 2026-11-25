@@ -1,0 +1,377 @@
+/* ==========================================================
+   layout.css — макет сторінок: контейнер, шапка, меню,
+   головний екран, сітки, підвал, медіазапити.
+   Підхід mobile-first: базові стилі для телефона,
+   медіазапити (min-width) додають розкладку для планшета та ПК.
+   Точки зламу: 600px (планшет), 900px (ноутбук/ПК).
+   ========================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+}
+
+.narrow {
+  max-width: 760px;
+}
+
+.section {
+  padding-block: var(--space-6);
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+/* ---------- Шапка (Flexbox) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--royal-blue);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+
+.logo img {
+  width: 96px;
+  height: auto;
+}
+
+/* ---------- Бургер-меню (без JS: прихований checkbox + label) ---------- */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.burger-lines,
+.burger-lines::before,
+.burger-lines::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--dark-blue);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.burger-lines {
+  position: relative;
+}
+
+.burger-lines::before,
+.burger-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.burger-lines::before {
+  top: -7px;
+}
+
+.burger-lines::after {
+  top: 7px;
+}
+
+/* Хрестик, коли меню відкрите */
+.nav-toggle:checked + .burger .burger-lines {
+  background: transparent;
+}
+
+.nav-toggle:checked + .burger .burger-lines::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle:checked + .burger .burger-lines::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-toggle:focus-visible + .burger {
+  outline: 2px solid var(--royal-blue);
+}
+
+/* Мобільне меню: випадаючий список на всю ширину */
+.main-nav {
+  display: none;
+  flex-basis: 100%;
+  padding-bottom: var(--space-2);
+}
+
+.nav-toggle:checked ~ .main-nav {
+  display: block;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list li + li {
+  margin-top: 0;
+}
+
+.nav-list a,
+.link-login {
+  display: block;
+  padding: 12px 0;
+  font-weight: 500;
+  color: var(--dark-blue);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-list a:hover,
+.nav-list a[aria-current="page"],
+.link-login:hover,
+.link-login[aria-current="page"] {
+  color: var(--royal-blue);
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  padding-top: var(--space-2);
+}
+
+.header-actions .link-login {
+  border-bottom: 0;
+}
+
+/* ---------- Головний екран ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: min(70vh, 640px);
+  padding-block: var(--space-6);
+  text-align: center;
+  background-color: var(--bg-alt);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    url("../images/interior-lounge.jpg");
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    image-set(url("../images/interior-lounge.webp") type("image/webp"), url("../images/interior-lounge.jpg") type("image/jpeg"));
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-logo {
+  width: 180px;
+  margin-bottom: var(--space-3);
+}
+
+.hero h1 {
+  max-width: 18em;
+}
+
+.hero-lead {
+  max-width: 36em;
+  font-size: 1.125rem;
+  color: var(--dark-blue);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* ---------- Сітки (CSS Grid) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.card-grid li + li {
+  margin-top: 0;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.split-img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.account-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.account-section {
+  margin-top: var(--space-4);
+}
+
+/* ---------- Підвал ---------- */
+.site-footer {
+  padding-top: var(--space-6);
+  color: #E6EAF4;
+  background: var(--dark-blue);
+}
+
+.site-footer h2 {
+  font-size: 1.125rem;
+  color: var(--sand-gold);
+}
+
+.site-footer a {
+  color: var(--white);
+}
+
+.site-footer a:hover {
+  color: var(--sand-gold);
+}
+
+.footer-bottom {
+  margin-top: var(--space-4);
+  padding-block: var(--space-3);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================
+   Планшет: від 600px
+   ========================================================== */
+@media (min-width: 600px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reviews,
+  .auth-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-logo {
+    width: 240px;
+  }
+}
+
+/* ==========================================================
+   ПК: від 900px — горизонтальне меню, багатоколонкові макети
+   ========================================================== */
+@media (min-width: 900px) {
+  .burger {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+    flex: 1;
+    flex-basis: auto;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: var(--space-6);
+    padding-bottom: 0;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .nav-list a,
+  .link-login {
+    padding: var(--space-1) 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-list a[aria-current="page"] {
+    border-bottom-color: var(--royal-blue);
+  }
+
+  .header-actions {
+    padding-top: 0;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .split {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .doctor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: min(80vh, 720px);
+  }
+}

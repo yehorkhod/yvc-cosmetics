@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контакти — YVC Cosmetics</title>
+  <meta name="description" content="Адреса, телефон, графік роботи та форма зворотного зв'язку YVC Cosmetics.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="YVC Cosmetics — на головну" width="120" height="64"></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="burger" title="Меню"><span class="burger-lines"></span><span class="visually-hidden">Відкрити меню</span></label>
+      <nav class="main-nav" aria-label="Головне меню">
+        <ul class="nav-list">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="services.html">Послуги та ціни</a></li>
+        <li><a href="doctors.html">Лікарі</a></li>
+        <li><a href="contacts.html" aria-current="page">Контакти</a></li>
+        </ul>
+        <div class="header-actions">
+          <a class="link-login" href="login.html">Увійти</a>
+          <a class="btn btn-outline" href="booking.html">Записатись</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Темна тема</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="section container">
+      <h1>Контакти</h1>
+      <div class="split">
+        <div>
+          <h2>Як нас знайти</h2>
+          <address>
+            м. Київ, вул. Прикладна, 12, 2 поверх<br>
+            Телефон: <a href="tel:+380440000000">+380 44 000 00 00</a><br>
+            Email: <a href="mailto:info@yvc-cosmetics.example">info@yvc-cosmetics.example</a>
+          </address>
+          <h3>Графік роботи</h3>
+          <ul>
+            <li>Понеділок–п'ятниця: 09:00–20:00</li>
+            <li>Субота: 10:00–18:00</li>
+            <li>Неділя: вихідний</li>
+          </ul>
+          <h3>Як дістатися</h3>
+          <p>5 хвилин пішки від станції метро «Палац Спорту». Для клієнтів є безкоштовний паркінг у дворі.</p>
+          <p><a href="https://www.openstreetmap.org/#map=16/50.4381/30.5208" rel="noopener">Відкрити карту проїзду</a></p>
+        </div>
+        <div>
+          <h2>Поставити запитання</h2>
+          <form class="form" id="contact-form" action="#" method="get" novalidate>
+            <div class="field">
+            <label for="c-name">Ім'я</label>
+            <input type="text" id="c-name" name="name" autocomplete="name" required minlength="3">
+          <p class="field-error" id="c-name-error">Ім'я має містити щонайменше 3 символи.</p>
+            </div>
+            <div class="field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" autocomplete="email" required>
+          <p class="field-error" id="c-email-error">Email має містити @ і домен, наприклад name@mail.com.</p>
+            </div>
+            <div class="field">
+            <label for="c-message">Повідомлення</label>
+            <textarea id="c-message" name="message" rows="5" required minlength="10"></textarea>
+          <p class="field-error" id="c-message-error">Повідомлення має містити щонайменше 10 символів.</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Надіслати</button>
+            <p class="form-message" id="contact-message" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section>
+        <h2>Контакти</h2>
+        <address>
+          м. Київ, вул. Прикладна, 12<br>
+          <a href="tel:+380440000000">+380 44 000 00 00</a><br>
+          <a href="mailto:info@yvc-cosmetics.example">info@yvc-cosmetics.example</a>
+        </address>
+      </section>
+      <section>
+        <h2>Графік роботи</h2>
+        <ul class="plain-list">
+          <li>Пн–Пт: 09:00–20:00</li>
+          <li>Сб: 10:00–18:00</li>
+          <li>Нд: вихідний</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Ми в соцмережах</h2>
+        <ul class="plain-list">
+          <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+          <li><a href="https://t.me/" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="container footer-bottom">© 2026 YVC Cosmetics. Навчальний проєкт. Сьогодні: <time id="current-date"></time>.</p>
+  </footer>
+  <script src="./js/main.js"></script>
+</body>
+</html>

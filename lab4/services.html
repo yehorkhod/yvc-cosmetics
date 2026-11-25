@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Послуги та ціни — YVC Cosmetics</title>
+  <meta name="description" content="Каталог косметологічних послуг YVC Cosmetics з тривалістю та цінами.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"><img src="images/logo.svg" alt="YVC Cosmetics — на головну" width="120" height="64"></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="burger" title="Меню"><span class="burger-lines"></span><span class="visually-hidden">Відкрити меню</span></label>
+      <nav class="main-nav" aria-label="Головне меню">
+        <ul class="nav-list">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="services.html" aria-current="page">Послуги та ціни</a></li>
+        <li><a href="doctors.html">Лікарі</a></li>
+        <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+        <div class="header-actions">
+          <a class="link-login" href="login.html">Увійти</a>
+          <a class="btn btn-outline" href="booking.html">Записатись</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">Темна тема</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="section container">
+      <h1>Послуги та ціни</h1>
+      <p>Ціни вказано в гривнях за одну процедуру. Вартість консультації зараховується, якщо процедуру проведено в день консультації.</p>
+      <nav class="toc" aria-label="Категорії послуг">
+        <ul>
+          <li><a href="#face">Догляд за обличчям</a></li>
+          <li><a href="#injection">Ін'єкційні процедури</a></li>
+          <li><a href="#hardware">Апаратна косметологія</a></li>
+          <li><a href="#body">Догляд за тілом</a></li>
+          <li><a href="#consult">Консультації</a></li>
+        </ul>
+      </nav>
+      <section class="price-section" id="face">
+        <h2>Догляд за обличчям</h2>
+        <div class="table-wrap">
+        <table class="price-table">
+          <caption class="visually-hidden">Догляд за обличчям: назва, тривалість і ціна процедури</caption>
+          <thead>
+            <tr><th scope="col">Процедура</th><th scope="col">Тривалість</th><th scope="col">Ціна</th></tr>
+          </thead>
+          <tbody>
+            <tr class="price-row">
+              <th scope="row">Ультразвукова чистка обличчя</th>
+              <td>60 хв</td>
+              <td>1 200 грн</td>
+            </tr>
+            <tr class="price-row price-row--promo">
+              <th scope="row">Комбінована чистка обличчя <span class="badge">Акція</span></th>
+              <td>90 хв</td>
+              <td>1 500 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Мигдальний пілінг</th>
+              <td>45 хв</td>
+              <td>1 100 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Карбокситерапія</th>
+              <td>40 хв</td>
+              <td>900 грн</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+      <section class="price-section" id="injection">
+        <h2>Ін'єкційні процедури</h2>
+        <div class="table-wrap">
+        <table class="price-table">
+          <caption class="visually-hidden">Ін'єкційні процедури: назва, тривалість і ціна процедури</caption>
+          <thead>
+            <tr><th scope="col">Процедура</th><th scope="col">Тривалість</th><th scope="col">Ціна</th></tr>
+          </thead>
+          <tbody>
+            <tr class="price-row">
+              <th scope="row">Біоревіталізація</th>
+              <td>45 хв</td>
+              <td>3 800 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Мезотерапія обличчя</th>
+              <td>45 хв</td>
+              <td>2 500 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Ботулінотерапія (1 зона)</th>
+              <td>30 хв</td>
+              <td>3 200 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Контурна пластика губ</th>
+              <td>60 хв</td>
+              <td>6 500 грн</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+      <section class="price-section" id="hardware">
+        <h2>Апаратна косметологія</h2>
+        <div class="table-wrap">
+        <table class="price-table">
+          <caption class="visually-hidden">Апаратна косметологія: назва, тривалість і ціна процедури</caption>
+          <thead>
+            <tr><th scope="col">Процедура</th><th scope="col">Тривалість</th><th scope="col">Ціна</th></tr>
+          </thead>
+          <tbody>
+            <tr class="price-row price-row--promo">
+              <th scope="row">RF-ліфтинг обличчя <span class="badge">Акція</span></th>
+              <td>50 хв</td>
+              <td>2 200 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Мікрострумова терапія</th>
+              <td>40 хв</td>
+              <td>1 300 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Лазерна епіляція (пахви)</th>
+              <td>20 хв</td>
+              <td>800 грн</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+      <section class="price-section" id="body">
+        <h2>Догляд за тілом</h2>
+        <div class="table-wrap">
+        <table class="price-table">
+          <caption class="visually-hidden">Догляд за тілом: назва, тривалість і ціна процедури</caption>
+          <thead>
+            <tr><th scope="col">Процедура</th><th scope="col">Тривалість</th><th scope="col">Ціна</th></tr>
+          </thead>
+          <tbody>
+            <tr class="price-row">
+              <th scope="row">Антицелюлітний масаж</th>
+              <td>60 хв</td>
+              <td>1 000 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Пресотерапія</th>
+              <td>40 хв</td>
+              <td>600 грн</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+      <section class="price-section" id="consult">
+        <h2>Консультації</h2>
+        <div class="table-wrap">
+        <table class="price-table">
+          <caption class="visually-hidden">Консультації: назва, тривалість і ціна процедури</caption>
+          <thead>
+            <tr><th scope="col">Процедура</th><th scope="col">Тривалість</th><th scope="col">Ціна</th></tr>
+          </thead>
+          <tbody>
+            <tr class="price-row">
+              <th scope="row">Консультація лікаря-косметолога</th>
+              <td>30 хв</td>
+              <td>500 грн</td>
+            </tr>
+            <tr class="price-row">
+              <th scope="row">Консультація дерматолога</th>
+              <td>40 хв</td>
+              <td>700 грн</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+      <p><a class="btn btn-primary" href="booking.html">Записатись онлайн</a></p>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section>
+        <h2>Контакти</h2>
+        <address>
+          м. Київ, вул. Прикладна, 12<br>
+          <a href="tel:+380440000000">+380 44 000 00 00</a><br>
+          <a href="mailto:info@yvc-cosmetics.example">info@yvc-cosmetics.example</a>
+        </address>
+      </section>
+      <section>
+        <h2>Графік роботи</h2>
+        <ul class="plain-list">
+          <li>Пн–Пт: 09:00–20:00</li>
+          <li>Сб: 10:00–18:00</li>
+          <li>Нд: вихідний</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Ми в соцмережах</h2>
+        <ul class="plain-list">
+          <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+          <li><a href="https://t.me/" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.facebook.com/" rel="noopener">Facebook</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="container footer-bottom">© 2026 YVC Cosmetics. Навчальний проєкт. Сьогодні: <time id="current-date"></time>.</p>
+  </footer>
+  <script src="./js/main.js"></script>
+</body>
+</html>
