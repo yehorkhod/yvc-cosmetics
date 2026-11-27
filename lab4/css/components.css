@@ -371,7 +371,8 @@
    перевіряє браузер. :user-invalid спрацьовує лише після того,
    як користувач змінив поле або спробував надіслати форму,
    тож порожня форма не «червоніє» одразу.
-   Клас .is-invalid додається скриптом (ЛР4). */
+   У ЛР4 форми мають novalidate: перевіряє JavaScript, а поле
+   з помилкою отримує клас .is-invalid. */
 .field-error {
   display: none;
   margin: 4px 0 0;
@@ -379,9 +380,9 @@
   color: var(--danger);
 }
 
-.form input:user-invalid,
-.form select:user-invalid,
-.form textarea:user-invalid,
+.form:not([novalidate]) input:user-invalid,
+.form:not([novalidate]) select:user-invalid,
+.form:not([novalidate]) textarea:user-invalid,
 .field.is-invalid input,
 .field.is-invalid select,
 .field.is-invalid textarea {
@@ -389,12 +390,12 @@
   background-color: #FFF5F5;
 }
 
-.field:has(:user-invalid) .field-error,
+.form:not([novalidate]) .field:has(:user-invalid) .field-error,
 .field.is-invalid .field-error {
   display: block;
 }
 
-.field:has(:user-invalid) label,
+.form:not([novalidate]) .field:has(:user-invalid) label,
 .field.is-invalid label {
   color: var(--danger);
 }
