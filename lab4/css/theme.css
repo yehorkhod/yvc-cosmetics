@@ -127,10 +127,7 @@
 .dark-theme .hero {
   background-image:
     linear-gradient(rgba(18, 24, 38, 0.72), rgba(18, 24, 38, 0.72)),
-    url("../images/interior-lounge.jpg");
-  background-image:
-    linear-gradient(rgba(18, 24, 38, 0.72), rgba(18, 24, 38, 0.72)),
-    image-set(url("../images/interior-lounge.webp") type("image/webp"), url("../images/interior-lounge.jpg") type("image/jpeg"));
+    url("../images/interior-lounge.webp");
 }
 
 .dark-theme .card,

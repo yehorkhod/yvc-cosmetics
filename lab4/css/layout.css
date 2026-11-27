@@ -173,10 +173,7 @@
   background-color: var(--bg-alt);
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
-    url("../images/interior-lounge.jpg");
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
-    image-set(url("../images/interior-lounge.webp") type("image/webp"), url("../images/interior-lounge.jpg") type("image/jpeg"));
+    url("../images/interior-lounge.webp");
   background-position: center;
   background-size: cover;
 }

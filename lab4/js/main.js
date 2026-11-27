@@ -45,7 +45,6 @@ function showCurrentDate() {
   if (!el) return;
   const now = new Date();
   el.textContent = longDate.format(now);
-  el.dateTime = now.toISOString().slice(0, 10);
 }
 
 /* ---------- 2.1 Маніпуляція елементами ----------
@@ -158,7 +157,8 @@ function initFontSize() {
     if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     // у полях форм стрілки мають працювати як звичайно
-    if (event.target.closest('input, textarea, select, [contenteditable]')) return;
+    const target = event.target instanceof Element ? event.target : null;
+    if (target && target.closest('input, textarea, select, [contenteditable]')) return;
 
     event.preventDefault();
     const delta = event.key === 'ArrowUp' ? FONT_STEP : -FONT_STEP;
@@ -397,3 +397,194 @@ function initAuthForms() {
 initContactForm();
 initBookingForm();
 initAuthForms();
+
+/* ==========================================================
+   Особистий кабінет: список записів, скасування, перенесення
+   Правило з ЛР1 (ФВ-17, ФВ-18): скасувати чи перенести запис
+   можна не пізніше ніж за 24 години до візиту.
+   ========================================================== */
+const CANCEL_LIMIT_HOURS = 24;
+const HOUR = 60 * 60 * 1000;
+const STATUS_LABELS = {
+  new: 'Нове',
+  confirmed: 'Підтверджене',
+  cancelled: 'Скасоване',
+  done: 'Завершене',
+};
+
+const formatPrice = (n) => `${n.toLocaleString('uk-UA')} грн`;
+const formatWhen = (iso) => `${shortDate.format(new Date(iso))}, ${iso.slice(11, 16)}`;
+const hoursUntil = (iso) => (new Date(iso) - Date.now()) / HOUR;
+
+// Демо-дані для першого входу: дати рахуються від поточного моменту,
+// тож завжди є запис, який уже не можна скасувати (< 24 год).
+function seedBookings() {
+  if (storage.get(BOOKINGS_KEY)) return;
+  const at = (days, hour) => {
+    const d = new Date();
+    d.setDate(d.getDate() + days);
+    d.setHours(hour, 0, 0, 0);
+    return toLocalIso(d);
+  };
+  const soon = new Date().getHours() < 18 ? at(0, 19) : at(1, 10);
+  saveBookings([
+    { id: 'demo1', start: soon, service: 'Ультразвукова чистка обличчя', doctor: 'Марія Ткаченко', price: 1200, status: 'confirmed' },
+    { id: 'demo2', start: at(3, 14), service: 'Біоревіталізація', doctor: 'Ірина Мельник', price: 3800, status: 'confirmed' },
+    { id: 'demo3', start: at(10, 11), service: 'RF-ліфтинг обличчя', doctor: 'Андрій Бондар', price: 2200, status: 'new' },
+    { id: 'demo4', start: at(-37, 10), service: 'Консультація лікаря-косметолога', doctor: 'Олена Коваль', price: 500, status: 'done' },
+    { id: 'demo5', start: at(-80, 16), service: 'Мигдальний пілінг', doctor: 'Олена Коваль', price: 1100, status: 'cancelled' },
+  ]);
+}
+
+function cell(content) {
+  const td = document.createElement('td');
+  if (content instanceof Node) td.append(content);
+  else td.textContent = content;
+  return td;
+}
+
+function statusBadge(status) {
+  const span = document.createElement('span');
+  span.className = `status status--${status}`;
+  span.textContent = STATUS_LABELS[status];
+  return span;
+}
+
+function bookingRow(booking, withActions) {
+  const tr = document.createElement('tr');
+  const time = document.createElement('time');
+  time.dateTime = booking.start;
+  time.textContent = formatWhen(booking.start);
+
+  tr.append(
+    cell(time),
+    cell(booking.service),
+    cell(booking.doctor),
+    cell(formatPrice(booking.price)),
+    cell(statusBadge(booking.status)),
+  );
+
+  if (withActions) {
+    const td = document.createElement('td');
+    td.className = 'actions';
+    const locked = hoursUntil(booking.start) < CANCEL_LIMIT_HOURS;
+
+    const move = document.createElement('a');
+    move.className = 'btn btn-small btn-secondary';
+    move.textContent = 'Перенести';
+
+    const cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.className = 'btn btn-small btn-danger';
+    cancel.textContent = 'Скасувати';
+    cancel.dataset.id = booking.id;
+
+    if (locked) {
+      const hint = 'До візиту менше 24 годин — зателефонуйте в клініку';
+      cancel.disabled = true;
+      cancel.title = hint;
+      move.setAttribute('aria-disabled', 'true');
+      move.title = hint;
+    } else {
+      move.href = `booking.html?reschedule=${encodeURIComponent(booking.id)}`;
+    }
+    td.append(move, cancel);
+    tr.append(td);
+  }
+  return tr;
+}
+
+function emptyRow(colspan, text, link) {
+  const tr = document.createElement('tr');
+  const td = document.createElement('td');
+  td.colSpan = colspan;
+  td.textContent = `${text} `;
+  if (link) {
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.textContent = link.text;
+    td.append(a);
+  }
+  tr.append(td);
+  return tr;
+}
+
+function renderBookings() {
+  const upcomingBody = $('#upcoming-body');
+  const pastBody = $('#past-body');
+  const now = Date.now();
+  const all = getBookings();
+
+  const isUpcoming = (b) => new Date(b.start) > now && (b.status === 'new' || b.status === 'confirmed');
+  const upcoming = all.filter(isUpcoming).sort((a, b) => a.start.localeCompare(b.start));
+  const past = all.filter((b) => !isUpcoming(b)).sort((a, b) => b.start.localeCompare(a.start));
+
+  upcomingBody.replaceChildren(...(upcoming.length
+    ? upcoming.map((b) => bookingRow(b, true))
+    : [emptyRow(6, 'Майбутніх записів немає.', { href: 'booking.html', text: 'Записатися на процедуру' })]));
+  pastBody.replaceChildren(...(past.length
+    ? past.map((b) => bookingRow(b, false))
+    : [emptyRow(5, 'Історія візитів порожня.')]));
+}
+
+function cancelBooking(id) {
+  const bookings = getBookings();
+  const booking = bookings.find((b) => b.id === id);
+  const message = $('#account-message');
+  if (!booking) return;
+
+  // Повторна перевірка: сторінка могла бути відкрита довго
+  if (hoursUntil(booking.start) < CANCEL_LIMIT_HOURS) {
+    message.textContent = 'До візиту залишилося менше 24 годин — скасування можливе лише телефоном.';
+    message.classList.add('is-error');
+    renderBookings();
+    return;
+  }
+
+  const ok = window.confirm(`Скасувати запис «${booking.service}» на ${formatWhen(booking.start)}?`);
+  if (!ok) return;
+
+  booking.status = 'cancelled';
+  saveBookings(bookings);
+  renderBookings();
+  message.classList.remove('is-error');
+  message.textContent = `Запис «${booking.service}» скасовано. Час звільнено, підтвердження надіслано на email.`;
+}
+
+function initAccount() {
+  if (!$('#upcoming-body')) return;
+
+  const user = getUser();
+  if (!user) {
+    location.replace('login.html');
+    return;
+  }
+  $('#user-name').textContent = user.name;
+  $('#user-email').textContent = user.email;
+
+  seedBookings();
+  renderBookings();
+
+  // Делегування подій: один обробник на всю таблицю
+  $('#upcoming-body').addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-id]');
+    if (button) cancelBooking(button.dataset.id);
+  });
+
+  $('#logout').addEventListener('click', () => {
+    storage.remove(USER_KEY);
+    location.href = 'login.html';
+  });
+}
+
+// У шапці: «Увійти» → «Кабінет» для авторизованого користувача
+function updateHeaderForUser() {
+  const user = getUser();
+  const link = $('.link-login');
+  if (!user || !link) return;
+  link.textContent = 'Кабінет';
+  link.href = 'account.html';
+}
+
+updateHeaderForUser();
+initAccount();
